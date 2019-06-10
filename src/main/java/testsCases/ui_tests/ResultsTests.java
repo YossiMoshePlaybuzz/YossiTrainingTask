@@ -7,6 +7,7 @@ import infrastructure.pageObjects_Playbuzz.ResultsPage;
 import infrastructure.pageObjects_Playbuzz.resultSection.ResultSection;
 import infrastructure.utils.MyListener;
 import infrastructure.utils.ui.BaseTest;
+import infrastructure.utils.ui.Groups;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
@@ -20,7 +21,7 @@ public class ResultsTests extends BaseTest {
 
     private String searchValue = "pearl jam";
 
-    @Test
+    @Test(groups =  {Groups.REGRESSION})
     public void test02_titleNotEmpty() {
         MainPage PlaybuzzMainPage = new MainPage(driver);
         ResultsPage PlaybuzzResultsPage = new ResultsPage(driver);
@@ -35,7 +36,7 @@ public class ResultsTests extends BaseTest {
         assertTrue(!driver.getTitle().isEmpty());
     }
 
-    @Test
+    @Test(groups =  {Groups.REGRESSION})
     public void test03_allResultsContainsSearchValue() {
         MainPage PlaybuzzMainPage = new MainPage(driver);
         ResultsPage PlaybuzzResultsPage = new ResultsPage(driver);

@@ -18,7 +18,7 @@ public class LoadTests extends BaseTest {
     private static String startTime;
     private static String endTime;
 
-    @Test(groups =  {Groups.BROWSER_FIREFOX})
+    @Test(groups =  {Groups.SMOKE})
     public void test01_LoadTimeGoogleSite() throws ParseException {
         startTime = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
         driver.get(url);
