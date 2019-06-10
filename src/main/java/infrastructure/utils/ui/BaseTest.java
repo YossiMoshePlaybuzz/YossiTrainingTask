@@ -4,6 +4,8 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import infrastructure.utils.report.Reporter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.*;
 import org.xml.sax.SAXException;
 
@@ -13,12 +15,15 @@ import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+
 public class BaseTest extends BrowserManager {
     private  ExtentReports extent;
     private  ExtentTest test;
+
     private String reportFilePath = "C:/Automation/Reports/";
     private String reportFileName = "TestExecution";
     private static String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
+
 
     @BeforeSuite
     public void doBeforeSuite() {

@@ -5,13 +5,17 @@ import com.codeborne.selenide.SelenideElement;
 import infrastructure.pageObjects_Playbuzz.MainPage;
 import infrastructure.pageObjects_Playbuzz.ResultsPage;
 import infrastructure.pageObjects_Playbuzz.resultSection.ResultSection;
+import infrastructure.utils.MyListener;
 import infrastructure.utils.ui.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.$;
 import static org.testng.Assert.assertTrue;
 
+
+@Listeners(MyListener.class)
 public class ResultsTests extends BaseTest {
 
     private String searchValue = "pearl jam";

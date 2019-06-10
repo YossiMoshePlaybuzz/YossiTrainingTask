@@ -1,7 +1,9 @@
 package testsCases.ui_tests;
 
+import infrastructure.utils.MyListener;
 import infrastructure.utils.ui.BaseTest;
 import infrastructure.utils.ui.Groups;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,6 +11,7 @@ import java.util.Calendar;
 
 import static org.testng.Assert.assertTrue;
 
+@Listeners(MyListener.class)
 public class LoadTests extends BaseTest {
 
     private static SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");

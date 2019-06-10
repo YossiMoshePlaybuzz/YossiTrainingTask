@@ -6,15 +6,20 @@ import com.jayway.restassured.response.Response;
 import infrastructure.pageObjects_Playbuzz.MainPage;
 import infrastructure.pageObjects_Playbuzz.ResultsPage;
 import infrastructure.pageObjects_Playbuzz.resultSection.ResultSection;
+import infrastructure.utils.MyListener;
 import infrastructure.utils.ui.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
 
-
+@Listeners(MyListener.class)
 public class API_Results extends BaseTest {
     private String searchValue = "pearl jam";
 
