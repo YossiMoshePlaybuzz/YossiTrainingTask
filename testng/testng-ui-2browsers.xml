@@ -11,7 +11,7 @@
     <test name="ui-firefox" parallel="methods" thread-count="2">
         <parameter name="browserType" value="chrome"/>
         <classes>
-            <class name="testsCases.ui_tests.Tests" />
+            <class name="testsCases.ui_tests.ResultsTests" />
         </classes>
     </test>
 

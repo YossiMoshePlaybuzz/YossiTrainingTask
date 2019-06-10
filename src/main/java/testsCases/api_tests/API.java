@@ -49,7 +49,7 @@ public class API extends BaseAPIClient {
     public void status_code() {
         RestAssured.
                 given()
-                .get("/api/users/2")
+                .get("https://pearljam.com/tour")
                 .then()
                 .statusCode(200);
     }

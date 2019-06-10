@@ -15,11 +15,17 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 public class BrowserManager {
     protected WebDriver driver = null;
     protected String url = "https://www.google.com/";
+    protected static SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+    protected static String startTime;
+    protected static String endTime;
+    protected static Calendar cal;
 
     public WebDriver getBrowser(String browserType) throws IOException, SAXException, ParserConfigurationException {
         switch(browserType.toLowerCase())

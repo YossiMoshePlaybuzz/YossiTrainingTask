@@ -1,0 +1,29 @@
+package infrastructure.pageObjects_Playbuzz;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
+
+
+public class ResultsPage
+{
+	@FindBy(className = "rc")
+	private List<WebElement> results;
+
+	public ResultsPage(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
+
+	public WebElement getSectionByIndex(int index){
+		return results.get(index);
+	}
+
+	public List<WebElement> getResults(){
+		return results;
+	}
+}
