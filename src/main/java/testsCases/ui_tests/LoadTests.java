@@ -11,12 +11,16 @@ import static org.testng.Assert.assertTrue;
 
 public class LoadTests extends BaseTest {
 
+    private static SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+    private static String startTime;
+    private static String endTime;
+
     @Test(groups =  {Groups.BROWSER_FIREFOX})
     public void test01_LoadTimeGoogleSite() throws ParseException {
         startTime = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
         driver.get(url);
         endTime = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
         long diffInMillies = Math.abs(format.parse(endTime).getTime() - format.parse(startTime).getTime());
-        assertTrue(diffInMillies<=1000);
+        assertTrue(diffInMillies<=2000);
     }
 }

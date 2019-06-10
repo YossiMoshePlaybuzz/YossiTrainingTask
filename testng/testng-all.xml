@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All-Suite" parallel="tests" thread-count="3"> <!--  parallel="methods" thread-count="2"  -->
+<suite name="All-Suite" parallel="tests" thread-count="2"> <!--  parallel="methods" thread-count="2"  -->
 
-    <test name="api"  parallel="methods" thread-count="3">
+    <test name="api"  parallel="methods" thread-count="2">
         <packages>
             <package name="testsCases.api_tests.*"/>
         </packages>
     </test>
-    <test name="ui-chrome" parallel="methods" thread-count="2">
+    <test name="ui-firefox" parallel="methods" thread-count="2">
         <parameter name="browserType" value="firefox"/>
         <classes>
             <class name="testsCases.ui_tests.LoadTests" />
         </classes>
     </test>
-    <test name="ui-firefox" parallel="methods" thread-count="2">
+    <test name="ui-chrome" parallel="methods" thread-count="2">
         <parameter name="browserType" value="chrome"/>
         <classes>
             <class name="testsCases.ui_tests.ResultsTests" />

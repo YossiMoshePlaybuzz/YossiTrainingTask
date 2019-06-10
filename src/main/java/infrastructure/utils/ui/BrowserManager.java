@@ -1,6 +1,7 @@
 package infrastructure.utils.ui;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -19,23 +20,22 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static org.awaitility.Awaitility.with;
+
 public class BrowserManager {
     protected WebDriver driver = null;
     protected String url = "https://www.google.com/";
-    protected static SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-    protected static String startTime;
-    protected static String endTime;
-    protected static Calendar cal;
+    private int timeout = 30;
+
 
     public WebDriver getBrowser(String browserType) throws IOException, SAXException, ParserConfigurationException {
         switch(browserType.toLowerCase())
         {
             case "chrome":
                 return initRemoteChromeDriver();
-                //return initChromeDriver();
             case "firefox":
                 return initRemoteFFDriver();
-                //return initFFDriver();
             case "ie":
                 return initIEDriver();
             default:
@@ -43,11 +43,6 @@ public class BrowserManager {
         }
     }
 
-    public WebDriver initChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", "C:/AutomationTraining/src/main/java/drivers/chromedriver.exe");
-        driver = new ChromeDriver();
-        return driver;
-    }
 
     public WebDriver initRemoteChromeDriver() throws MalformedURLException {
         System.setProperty("webdriver.chrome.driver", "C:/AutomationTraining/src/main/java/drivers/chromedriver.exe");
@@ -72,17 +67,8 @@ public class BrowserManager {
         return driver;
     }
 
-    public WebDriver initFFDriver() throws ParserConfigurationException, SAXException, IOException {
-        System.setProperty("webdriver.gecko.driver", "C:/AutomationTraining/src/main/java/drivers/geckodriver.exe");
-        File pathBinary = new File("C:/AutomationTraining/src/main/java/drivers/geckodriver.exe");
-        FirefoxBinary firefoxBinary = new FirefoxBinary(pathBinary);
-        FirefoxProfile firefoxProfile = new FirefoxProfile();
-        driver = new FirefoxDriver(firefoxBinary, firefoxProfile);
 
-        return driver;
-    }
-
-    public WebDriver initRemoteFFDriver() throws ParserConfigurationException, SAXException, IOException {
+    public WebDriver initRemoteFFDriver() throws IOException {
         System.setProperty("webdriver.gecko.driver", "C:/AutomationTraining/src/main/java/drivers/geckodriver.exe");
         DesiredCapabilities cap = setFFCapabilities();
         driver = new RemoteWebDriver(setHubUrl(),cap);
@@ -99,6 +85,19 @@ public class BrowserManager {
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+
+    public void waitForUrlToAppear(String url,WebDriver driver) {
+        with()
+                .alias("URL was not become = " + url)
+                .pollInSameThread()
+                .await()
+                .atMost(timeout, TimeUnit.SECONDS).until(() -> isUrlAppear(url,driver));
+    }
+
+    public boolean isUrlAppear(String url, WebDriver driver){
+        String currentUrl = driver.getCurrentUrl();
+        return currentUrl.contains(url);
     }
 
 

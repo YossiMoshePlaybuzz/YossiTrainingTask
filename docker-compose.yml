@@ -7,12 +7,19 @@ services:
       ports:
          - 4446:4444
          
-    chromenode:
+    chromenode1:
       image: selenium/node-chrome-debug
       ports:
         - 4578
       links:
        -  seleniumhub:hub
+
+    chromenode2:
+      image: selenium/node-chrome-debug
+      ports:
+        - 4579
+      links:
+        - seleniumhub:hub
     
     firefoxnode:
       image: selenium/node-firefox-debug
