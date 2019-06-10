@@ -3,13 +3,11 @@ package infrastructure.utils.ui;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import infrastructure.utils.report.Reporter;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.testcontainers.containers.DockerComposeContainer;
 import org.testng.annotations.*;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
@@ -19,19 +17,23 @@ import java.util.Calendar;
 public class BaseTest extends BrowserManager {
     private  ExtentReports extent;
     private  ExtentTest test;
-
     private String reportFilePath = "C:/Automation/Reports/";
     private String reportFileName = "TestExecution";
     private static String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
 
+    //private static DockerComposeContainer environment =
+    //        new DockerComposeContainer
+    //            (new File("docker-compose.yml"));
 
     @BeforeSuite
     public void doBeforeSuite() {
+        //environment.start();
         InstanceReport();
     }
 
     @AfterSuite
     public void doAfterSuite() {
+        //environment.stop();
         finalizeExtentReport();
     }
 
@@ -41,6 +43,7 @@ public class BaseTest extends BrowserManager {
         driver = getBrowser(browserType);
         System.out.println("start driver");
         setBrowserSettings(driver);
+
         //InitReportTest(method.getName().split("_")[0], method.getName().split("_")[1]);
         //test.log(LogStatus.PASS, "Test " + method.getName().split("_")[1] + " started");
     }

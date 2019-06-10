@@ -1,26 +1,15 @@
 package infrastructure.utils.ui;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
-
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.awaitility.Awaitility.with;
 
 public class BrowserManager {
@@ -29,7 +18,7 @@ public class BrowserManager {
     private int timeout = 30;
 
 
-    public WebDriver getBrowser(String browserType) throws IOException, SAXException, ParserConfigurationException {
+    public WebDriver getBrowser(String browserType) throws IOException {
         switch(browserType.toLowerCase())
         {
             case "chrome":

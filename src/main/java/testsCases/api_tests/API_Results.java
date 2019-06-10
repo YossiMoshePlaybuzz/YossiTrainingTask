@@ -10,13 +10,8 @@ import infrastructure.utils.MyListener;
 import infrastructure.utils.ui.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static com.codeborne.selenide.Selenide.$;
 
 @Listeners(MyListener.class)
@@ -25,37 +20,37 @@ public class API_Results extends BaseTest {
 
 
     @Test
-    public void firstResultsContainsPearlJam() {
+    public void test05_firstResultsContainsPearlJam() {
         MainPage PlaybuzzMainPage = new MainPage(driver);
         ResultsPage PlaybuzzResultsPage = new ResultsPage(driver);
         ResultSection PlaybuzzResultSection = new ResultSection(driver);
         driver.get(url);
         PlaybuzzMainPage.searchValue(searchValue);
-        WebElement result = PlaybuzzResultsPage.getSectionByIndex(0);
+        WebElement result = PlaybuzzResultsPage.getResultByIndex(0);
         String url = $(result).find(PlaybuzzResultSection.LINKED_URL).getText();
         Assert.assertTrue(isPearlJamExistInPage(url));
     }
 
     @Test
-    public void secondResultsContainsPearlJam() {
+    public void test06_secondResultsContainsPearlJam() {
         MainPage PlaybuzzMainPage = new MainPage(driver);
         ResultsPage PlaybuzzResultsPage = new ResultsPage(driver);
         ResultSection PlaybuzzResultSection = new ResultSection(driver);
         driver.get(url);
         PlaybuzzMainPage.searchValue(searchValue);
-        WebElement result = PlaybuzzResultsPage.getSectionByIndex(3);
+        WebElement result = PlaybuzzResultsPage.getResultByIndex(3);
         String url = $(result).find(PlaybuzzResultSection.LINKED_URL).getText();
         Assert.assertTrue(isPearlJamExistInPage(url));
     }
 
     @Test
-    public void thirdResultsContainsPearlJam() {
+    public void test07_thirdResultsContainsPearlJam() {
         MainPage PlaybuzzMainPage = new MainPage(driver);
         ResultsPage PlaybuzzResultsPage = new ResultsPage(driver);
         ResultSection PlaybuzzResultSection = new ResultSection(driver);
         driver.get(url);
         PlaybuzzMainPage.searchValue(searchValue);
-        WebElement result = PlaybuzzResultsPage.getSectionByIndex(2);
+        WebElement result = PlaybuzzResultsPage.getResultByIndex(2);
         String url = $(result).find(PlaybuzzResultSection.LINKED_URL).getText();
         Assert.assertTrue(isPearlJamExistInPage(url));
     }

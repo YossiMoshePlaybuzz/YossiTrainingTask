@@ -19,7 +19,7 @@ public class ResultsPage
 		PageFactory.initElements(driver, this);
 	}
 
-	public WebElement getSectionByIndex(int index){
+	public WebElement getResultByIndex(int index){
 		return results.get(index);
 	}
 

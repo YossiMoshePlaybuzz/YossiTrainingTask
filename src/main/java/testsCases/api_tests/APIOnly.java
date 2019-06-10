@@ -16,7 +16,7 @@ public class APIOnly {
     }
 
     @Test
-    public void highestId() {
+    public void test04_highestId() {
         RestAssured.
                 get("/api/users?page=2")
                 .then()

@@ -2,7 +2,6 @@ package infrastructure.utils.report;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 

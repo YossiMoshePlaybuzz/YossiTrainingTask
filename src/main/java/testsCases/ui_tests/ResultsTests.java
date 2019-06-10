@@ -28,7 +28,7 @@ public class ResultsTests extends BaseTest {
         ResultSection PlaybuzzResultSection = new ResultSection(driver);
         driver.get(url);
         PlaybuzzMainPage.searchValue(searchValue);
-        WebElement result = PlaybuzzResultsPage.getSectionByIndex(0);
+        WebElement result = PlaybuzzResultsPage.getResultByIndex(0);
         SelenideElement urlElement = $(result).find(PlaybuzzResultSection.LINKED_URL);
         String url = urlElement.getText();
         urlElement.click();
