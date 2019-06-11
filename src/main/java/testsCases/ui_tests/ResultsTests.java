@@ -21,7 +21,7 @@ public class ResultsTests extends BaseTest {
     private String PearlJam = "pearl jam";
 
     @Test(groups =  {Groups.REGRESSION})
-    public void test03_allResultsContainsPearlJam() {
+    public void Test03_allResultsContainsPearlJam() {
         MainPage PlaybuzzMainPage = new MainPage(driver);
         ResultsPage PlaybuzzResultsPage = new ResultsPage(driver);
         ResultSection PlaybuzzResultSection = new ResultSection(driver);

@@ -20,9 +20,12 @@ public class BaseTest extends BrowserManager {
     private String reportFileName = "TestExecution";
     private static String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
 
-    //private static DockerComposeContainer environment =
-    //        new DockerComposeContainer
-    //            (new File("docker-compose.yml"));
+//    private static DockerComposeContainer environment =
+//                   new DockerComposeContainer (new File("C:/docker-compose.yml"))
+//                        .withExposedService("seleniumhub",4446)
+//                        .withExposedService("chromenode1",4578)
+//                        .withExposedService("chromenode2",4579)
+//                        .withExposedService("firefoxnode",4577);
 
     @BeforeSuite
     public void doBeforeSuite() {
