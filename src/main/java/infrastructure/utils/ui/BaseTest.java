@@ -15,8 +15,7 @@ import java.util.Calendar;
 
 
 public class BaseTest extends BrowserManager {
-    private  ExtentReports extent;
-    private  ExtentTest test;
+    private  static ExtentReports extent;
     private String reportFilePath = "C:/Automation/Reports/";
     private String reportFileName = "TestExecution";
     private static String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
@@ -39,35 +38,28 @@ public class BaseTest extends BrowserManager {
 
     @BeforeMethod
     @Parameters ({ "browserType" })
-    public void DoBeforeMethod(@Optional("chrome") String browserType, Method method) throws ParserConfigurationException, SAXException, IOException {
+    public void DoBeforeMethod(@Optional("chrome") String browserType, Method method) throws IOException {
         driver = getBrowser(browserType);
         System.out.println("start driver");
         setBrowserSettings(driver);
-
-        //InitReportTest(method.getName().split("_")[0], method.getName().split("_")[1]);
-        //test.log(LogStatus.PASS, "Test " + method.getName().split("_")[1] + " started");
+        InitReportTest(method.getName().split("_")[0], method.getName().split("_")[1]);
     }
 
     @AfterMethod
     public void DoAfterMethod() {
         System.out.println("entered after method");
         driver.quit();
-        //finalizeReportTest();
         System.out.println("after driver closed");
     }
 
     public void InstanceReport()  {
         extent = new ExtentReports(
                 reportFilePath + "Execution_" + timeStamp + "/" +reportFileName + ".html");
-
     }
 
     public  void InitReportTest(String testName, String testDescription) {
-        test = extent.startTest(testName, testDescription);
-    }
-
-    public  void finalizeReportTest() {
-        test.log(LogStatus.PASS, "Test ended");
+        ExtentTest test = extent.startTest(testName, testDescription);
+        test.log(LogStatus.PASS, "Test " + testDescription + " is running");
         extent.endTest(test);
     }
 

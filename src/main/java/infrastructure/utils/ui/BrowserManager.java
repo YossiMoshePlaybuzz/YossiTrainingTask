@@ -1,6 +1,7 @@
 package infrastructure.utils.ui;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -36,6 +37,8 @@ public class BrowserManager {
     public WebDriver initRemoteChromeDriver() throws MalformedURLException {
         System.setProperty("webdriver.chrome.driver", "C:/AutomationTraining/src/main/java/drivers/chromedriver.exe");
         DesiredCapabilities cap = setChromeCapabilities();
+        //ChromeOptions options = new ChromeOptions();
+        //options.addArguments("--lang=es");
         driver = new RemoteWebDriver(setHubUrl(),cap);
         return driver;
     }
