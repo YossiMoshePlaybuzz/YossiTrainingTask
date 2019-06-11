@@ -1,4 +1,4 @@
-package testsCases.api_tests;
+package api_tests;
 
 import com.jayway.restassured.RestAssured;
 import infrastructure.utils.Groups;

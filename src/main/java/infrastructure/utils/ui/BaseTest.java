@@ -3,15 +3,12 @@ package infrastructure.utils.ui;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import org.testcontainers.containers.DockerComposeContainer;
 import org.testng.annotations.*;
-import org.xml.sax.SAXException;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 
 public class BaseTest extends BrowserManager {
@@ -20,22 +17,26 @@ public class BaseTest extends BrowserManager {
     private String reportFileName = "TestExecution";
     private static String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
 
-//    private static DockerComposeContainer environment =
-//                   new DockerComposeContainer (new File("C:/docker-compose.yml"))
-//                        .withExposedService("seleniumhub",4446)
-//                        .withExposedService("chromenode1",4578)
-//                        .withExposedService("chromenode2",4579)
-//                        .withExposedService("firefoxnode",4577);
+    public void startDockerCompose() throws IOException, InterruptedException {
+        String command = "powershell.exe  docker-compose up";
+        Process powerShellProcess = Runtime.getRuntime().exec(command);
+        powerShellProcess.waitFor(30, TimeUnit.SECONDS);
+    }
+
+    public void stopDockerCompose() throws IOException {
+        String command = "powershell.exe  docker-compose down";
+        Runtime.getRuntime().exec(command);
+    }
 
     @BeforeSuite
-    public void doBeforeSuite() {
-        //environment.start();
+    public void doBeforeSuite() throws IOException, InterruptedException {
+        startDockerCompose();
         InstanceReport();
     }
 
     @AfterSuite
-    public void doAfterSuite() {
-        //environment.stop();
+    public void doAfterSuite() throws IOException {
+        stopDockerCompose();
         finalizeExtentReport();
     }
 

@@ -15,7 +15,7 @@ import static org.testng.Assert.assertTrue;
 public class TitleTests extends BaseTest {
     private String PearlJam = "pearl jam";
 
-    @Test(groups =  {Groups.REGRESSION})
+    @Test(groups =  {Groups.REGRESSION,Groups.ALL})
     public void Test02_titleNotEmpty() {
         MainPage PlaybuzzMainPage = new MainPage(driver);
         ResultsPage PlaybuzzResultsPage = new ResultsPage(driver);

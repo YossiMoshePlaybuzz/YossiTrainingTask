@@ -1,4 +1,4 @@
-package testsCases.api_tests;
+package api_tests;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
@@ -10,9 +10,12 @@ import infrastructure.utils.MyListener;
 import infrastructure.utils.ui.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static com.codeborne.selenide.Selenide.$;
 
 @Listeners(MyListener.class)

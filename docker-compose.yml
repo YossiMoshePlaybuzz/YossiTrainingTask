@@ -9,6 +9,8 @@ services:
          
     chromenode1:
       image: selenium/node-chrome-debug
+      depends_on:
+        - seleniumhub
       ports:
         - 4578
       links:
@@ -16,6 +18,8 @@ services:
 
     chromenode2:
       image: selenium/node-chrome-debug
+      depends_on:
+        - seleniumhub
       ports:
         - 4579
       links:
@@ -23,6 +27,8 @@ services:
     
     firefoxnode:
       image: selenium/node-firefox-debug
+      depends_on:
+        - seleniumhub
       ports:
         - 4577
       links:

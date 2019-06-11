@@ -1,10 +1,11 @@
-package testsCases.ui_tests;
+package ui_tests;
 
+import infrastructure.utils.Groups;
 import infrastructure.utils.MyListener;
 import infrastructure.utils.ui.BaseTest;
-import infrastructure.utils.Groups;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
