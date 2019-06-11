@@ -2,7 +2,7 @@ package testsCases.ui_tests;
 
 import infrastructure.utils.MyListener;
 import infrastructure.utils.ui.BaseTest;
-import infrastructure.utils.ui.Groups;
+import infrastructure.utils.Groups;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.text.ParseException;
@@ -18,7 +18,7 @@ public class LoadTests extends BaseTest {
     private static String startTime;
     private static String endTime;
 
-    @Test(groups =  {Groups.SMOKE})
+    @Test(groups =  {Groups.REGRESSION})
     public void test01_LoadTimeGoogleSite() throws ParseException {
         startTime = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
         driver.get(url);

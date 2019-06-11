@@ -5,7 +5,7 @@ import infrastructure.pageObjects_Playbuzz.MainPage;
 import infrastructure.pageObjects_Playbuzz.ResultsPage;
 import infrastructure.pageObjects_Playbuzz.resultSection.ResultSection;
 import infrastructure.utils.ui.BaseTest;
-import infrastructure.utils.ui.Groups;
+import infrastructure.utils.Groups;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 

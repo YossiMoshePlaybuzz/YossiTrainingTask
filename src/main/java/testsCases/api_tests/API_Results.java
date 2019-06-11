@@ -1,11 +1,11 @@
 package testsCases.api_tests;
 
-
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 import infrastructure.pageObjects_Playbuzz.MainPage;
 import infrastructure.pageObjects_Playbuzz.ResultsPage;
 import infrastructure.pageObjects_Playbuzz.resultSection.ResultSection;
+import infrastructure.utils.Groups;
 import infrastructure.utils.MyListener;
 import infrastructure.utils.ui.BaseTest;
 import org.openqa.selenium.WebElement;
@@ -36,17 +36,17 @@ public class API_Results extends BaseTest {
         }
     }
 
-    @Test(dependsOnMethods = "beforeTests_getResults")
+    @Test(groups =  {Groups.SMOKE},dependsOnMethods = "beforeTests_getResults")
     public void test05_firstResultsContainsPearlJam() {
         Assert.assertTrue(isPearlJamExistInPage(urls.get(0)));
     }
 
-    @Test(dependsOnMethods = "beforeTests_getResults")
+    @Test(groups =  {Groups.SMOKE},dependsOnMethods = "beforeTests_getResults")
     public void test06_secondResultsContainsPearlJam() {
         Assert.assertTrue(isPearlJamExistInPage(urls.get(3)));
     }
 
-    @Test(dependsOnMethods = "beforeTests_getResults")
+    @Test(groups =  {Groups.SMOKE},dependsOnMethods = "beforeTests_getResults")
     public void test07_thirdResultsContainsPearlJam() {
         Assert.assertTrue(isPearlJamExistInPage(urls.get(4)));
     }
