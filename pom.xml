@@ -37,7 +37,13 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.0</version>
                 <configuration>
-                    <groups>regression</groups>
+                    <systemPropertyVariables>
+                        <url>${url}</url>
+                    </systemPropertyVariables>
+                    <groups>${testGroup}</groups>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng/smoke.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
 
@@ -149,11 +155,10 @@
             <artifactId>docker-compose</artifactId>
             <version>0.9.9</version>
         </dependency>
-
     </dependencies>
 
     <properties>
-        <url></url>
-        <tests></tests>
+        <url>"https://www.google.com/"</url>
+        <testGroup>smoke</testGroup>
     </properties>
 </project>
