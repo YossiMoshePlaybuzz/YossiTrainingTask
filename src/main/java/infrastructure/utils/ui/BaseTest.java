@@ -10,7 +10,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
-
 public class BaseTest extends BrowserManager {
     private  static ExtentReports extent;
     private String reportFilePath = "C:/Automation/Reports/";
@@ -19,12 +18,15 @@ public class BaseTest extends BrowserManager {
 
     public void startDockerCompose() throws IOException, InterruptedException {
         String command = "powershell.exe  docker-compose up";
-        Process powerShellProcess = Runtime.getRuntime().exec(command);
-        powerShellProcess.waitFor(30, TimeUnit.SECONDS);
+        runProcess(command);
     }
 
     public void stopDockerCompose() throws IOException, InterruptedException {
         String command = "powershell.exe  docker-compose down";
+        runProcess(command);
+    }
+
+    public void runProcess(String command) throws IOException, InterruptedException {
         Process powerShellProcess = Runtime.getRuntime().exec(command);
         powerShellProcess.waitFor(30, TimeUnit.SECONDS);
     }
@@ -52,9 +54,7 @@ public class BaseTest extends BrowserManager {
 
     @AfterMethod(alwaysRun = true)
     public void DoAfterMethod() {
-        System.out.println("entered after method");
         driver.quit();
-        System.out.println("after driver closed");
     }
 
     public void InstanceReport()  {
