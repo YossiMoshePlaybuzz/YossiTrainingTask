@@ -20,18 +20,7 @@
                 </configuration>
                 <version>3.8.0</version>
             </plugin>
-            <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M3</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -42,7 +31,7 @@
                     </systemPropertyVariables>
                     <groups>${testGroup}</groups>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng/smoke.xml</suiteXmlFile>
+                        <suiteXmlFile>testng/${testGroup}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
@@ -158,7 +147,7 @@
     </dependencies>
 
     <properties>
-        <url>"https://www.google.com/"</url>
+        <url>https://www.google.com/</url>
         <testGroup>smoke</testGroup>
     </properties>
 </project>

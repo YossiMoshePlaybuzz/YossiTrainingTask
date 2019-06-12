@@ -15,8 +15,8 @@ import static org.awaitility.Awaitility.with;
 
 public class BrowserManager {
     protected WebDriver driver = null;
-    private String urls = System.getProperty("url");
-    protected String url = "https://www.google.com/";
+    protected String url = System.getProperty("url");
+    //protected String url = "https://www.google.com/";
     private int timeout = 30;
 
 

@@ -23,9 +23,10 @@ public class BaseTest extends BrowserManager {
         powerShellProcess.waitFor(30, TimeUnit.SECONDS);
     }
 
-    public void stopDockerCompose() throws IOException {
+    public void stopDockerCompose() throws IOException, InterruptedException {
         String command = "powershell.exe  docker-compose down";
-        Runtime.getRuntime().exec(command);
+        Process powerShellProcess = Runtime.getRuntime().exec(command);
+        powerShellProcess.waitFor(30, TimeUnit.SECONDS);
     }
 
     @BeforeSuite
@@ -35,12 +36,12 @@ public class BaseTest extends BrowserManager {
     }
 
     @AfterSuite
-    public void doAfterSuite() throws IOException {
+    public void doAfterSuite() throws IOException, InterruptedException {
         stopDockerCompose();
         finalizeExtentReport();
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     @Parameters ({ "browserType" })
     public void DoBeforeMethod(@Optional("chrome") String browserType, Method method) throws IOException {
         driver = getBrowser(browserType);
@@ -49,7 +50,7 @@ public class BaseTest extends BrowserManager {
         InitReportTest(method.getName().split("_")[0], method.getName().split("_")[1]);
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void DoAfterMethod() {
         System.out.println("entered after method");
         driver.quit();
