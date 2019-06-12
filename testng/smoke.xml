@@ -7,5 +7,10 @@
             <package name="testsCases.api_tests.*"/>
         </packages>
     </test>
+    <test name="unit">
+        <packages>
+            <package name="java\build_test.*"/>
+        </packages>
+    </test>
 
 </suite>

@@ -19,21 +19,10 @@ public class BrowserManager {
     //protected String url = "https://www.google.com/";
     private int timeout = 30;
 
-
     public WebDriver getBrowser(String browserType) throws IOException {
-        switch(browserType.toLowerCase())
-        {
-            case "chrome":
-                return initRemoteChromeDriver();
-            case "firefox":
-                return initRemoteFFDriver();
-            case "ie":
-                return initIEDriver();
-            default:
-                throw new IllegalStateException("Unexpected value: " + browserType.toLowerCase());
-        }
+        WebDriverFactory factory = new WebDriverFactory();
+        return factory.CreateInstance(browserType);
     }
-
 
     public WebDriver initRemoteChromeDriver() throws MalformedURLException {
         System.setProperty("webdriver.chrome.driver", "C:/AutomationTraining/src/main/java/drivers/chromedriver.exe");

@@ -7,6 +7,6 @@ import org.testng.annotations.Listeners;
 @Listeners(MyListener.class)
 public class BuildTests {
     public void Test07_Build() {
-        Assert.assertTrue(true);
+        Assert.assertTrue(false);
     }
 }
