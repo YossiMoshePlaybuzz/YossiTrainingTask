@@ -6,7 +6,7 @@
             <package name="testsCases.api_tests.*"/>
         </packages>
     </test>
-    <test name="ui-firefox" parallel="methods" thread-count="2">
+    <test name="ui-firefox" parallel="methods" thread-count="1">
         <parameter name="browserType" value="chrome"/>
         <packages>
             <package name="testsCases.ui_tests.*"/>

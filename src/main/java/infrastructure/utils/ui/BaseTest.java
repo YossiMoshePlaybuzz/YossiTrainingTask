@@ -29,13 +29,13 @@ public class BaseTest extends BrowserManager {
         powerShellProcess.waitFor(30, TimeUnit.SECONDS);
     }
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void doBeforeSuite() throws IOException, InterruptedException {
         startDockerCompose();
         InstanceReport();
     }
 
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public void doAfterSuite() throws IOException, InterruptedException {
         stopDockerCompose();
         finalizeExtentReport();
