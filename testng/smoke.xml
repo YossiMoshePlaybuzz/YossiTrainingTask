@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="api-Suite"> <!--  parallel="methods" thread-count="1"  -->
 
+
     <test name="api">
         <packages>
             <package name="testsCases.api_tests.*"/>
@@ -9,7 +10,7 @@
     </test>
     <test name="unit">
         <packages>
-            <package name="java\build_test.*"/>
+            <package name="build_test.*"/>
         </packages>
     </test>
 

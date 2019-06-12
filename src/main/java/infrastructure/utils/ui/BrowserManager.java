@@ -1,12 +1,9 @@
 package infrastructure.utils.ui;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.xml.sax.SAXException;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,8 +13,7 @@ import static org.awaitility.Awaitility.with;
 public class BrowserManager {
     protected WebDriver driver = null;
     protected String url = System.getProperty("url");
-    //protected String url = "https://www.google.com/";
-    private int timeout = 30;
+    private static int timeout = 30;
 
     public WebDriver getBrowser(String browserType) throws IOException {
         WebDriverFactory factory = new WebDriverFactory();
@@ -27,8 +23,6 @@ public class BrowserManager {
     public WebDriver initRemoteChromeDriver() throws MalformedURLException {
         System.setProperty("webdriver.chrome.driver", "C:/AutomationTraining/src/main/java/drivers/chromedriver.exe");
         DesiredCapabilities cap = setChromeCapabilities();
-        //ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--lang=es");
         driver = new RemoteWebDriver(setHubUrl(),cap);
         return driver;
     }
@@ -48,7 +42,6 @@ public class BrowserManager {
         driver = new InternetExplorerDriver();
         return driver;
     }
-
 
     public WebDriver initRemoteFFDriver() throws IOException {
         System.setProperty("webdriver.gecko.driver", "C:/AutomationTraining/src/main/java/drivers/geckodriver.exe");

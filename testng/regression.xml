@@ -8,5 +8,10 @@
             <package name="testsCases.ui_tests.*"/>
         </packages>
     </test>
+    <test name="unit">
+        <packages>
+            <package name="build_test.*"/>
+        </packages>
+    </test>
 
 </suite>
