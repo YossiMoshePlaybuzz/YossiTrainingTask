@@ -48,7 +48,7 @@ public class API_Results extends BaseTest {
 
     @Test(groups =  {Groups.SMOKE,Groups.ALL},dependsOnMethods = "beforeTests_getResults")
     public void test07_thirdResultsContainsPearlJam() {
-        Assert.assertTrue(isPearlJamExistInPage(urls.get(4)));
+        Assert.assertTrue(isPearlJamExistInPage(urls.get(3)));
     }
 
     //---------------------------------------

@@ -19,7 +19,7 @@ public class ResultsPage
 	}
 
 	public WebElement getResultByIndex(int index){
-		return results.get(index+3);
+		return results.get(index);
 	}
 
 	public List<WebElement> getResults(){
