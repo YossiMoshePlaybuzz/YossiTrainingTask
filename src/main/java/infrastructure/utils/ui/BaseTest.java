@@ -47,7 +47,6 @@ public class BaseTest extends BrowserManager {
     @Parameters ({ "browserType" })
     public void DoBeforeMethod(@Optional("chrome") String browserType, Method method) throws IOException {
         driver = getBrowser(browserType);
-        System.out.println("start driver");
         setBrowserSettings(driver);
         InitReportTest(method.getName().split("_")[0], method.getName().split("_")[1]);
     }
