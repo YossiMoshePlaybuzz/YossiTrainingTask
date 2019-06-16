@@ -3,6 +3,7 @@ package infrastructure.utils.ui;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+import infrastructure.utils.MyListener;
 import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -10,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
+@Listeners(MyListener.class)
 public class BaseTest extends BrowserManager {
     private  static ExtentReports extent;
     private String reportFilePath = "C:/Automation/Reports/";

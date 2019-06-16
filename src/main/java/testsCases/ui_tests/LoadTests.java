@@ -5,25 +5,30 @@ import infrastructure.utils.ui.BaseTest;
 import infrastructure.utils.Groups;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
+import java.time.Duration;
+import java.time.LocalDateTime;
 import static org.testng.Assert.assertTrue;
 
-@Listeners(MyListener.class)
+
 public class LoadTests extends BaseTest {
 
-    private static SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-    private static String startTime;
-    private static String endTime;
+    private long expectedLoadDurationInMili = 2000;
 
     @Test(groups =  {Groups.REGRESSION,Groups.ALL})
-    public void Test01_LoadTimeGoogleSite() throws ParseException {
-        startTime = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
+    public void Test01_LoadTimeGoogleSite() {
+        LocalDateTime startTime = getNowTime();
         driver.get(url);
-        endTime = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
-        long diffInMillies = Math.abs(format.parse(endTime).getTime() - format.parse(startTime).getTime());
-        assertTrue(diffInMillies<=2000);
+        LocalDateTime endTime = getNowTime();
+        long actualLoadTimeInMili = difBetweenTimesInMili(startTime,endTime);
+        assertTrue(actualLoadTimeInMili <= expectedLoadDurationInMili);
+    }
+
+
+    private LocalDateTime getNowTime(){
+        return LocalDateTime.now();
+    }
+
+    private long difBetweenTimesInMili(LocalDateTime startTime, LocalDateTime endTime){
+        return Duration.between(startTime, endTime).toMillis();
     }
 }

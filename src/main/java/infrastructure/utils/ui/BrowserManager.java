@@ -21,7 +21,7 @@ public class BrowserManager {
     }
 
     public WebDriver initRemoteChromeDriver() throws MalformedURLException {
-        System.setProperty("webdriver.chrome.driver", "C:/AutomationTraining/src/main/java/drivers/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "C:/AutomationTraining/src/main/java/drivers/chromedriver.exe");
         DesiredCapabilities cap = setChromeCapabilities();
         driver = new RemoteWebDriver(setHubUrl(),cap);
         return driver;

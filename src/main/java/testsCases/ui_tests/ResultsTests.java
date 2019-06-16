@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static org.testng.Assert.assertTrue;
 
 
-@Listeners(MyListener.class)
+
 public class ResultsTests extends BaseTest {
 
     private String PearlJam = "pearl jam";

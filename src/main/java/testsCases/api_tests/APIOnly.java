@@ -7,7 +7,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-@Listeners(MyListener.class)
+
 public class APIOnly {
 
     @Test (groups = {Groups.SMOKE,Groups.ALL})

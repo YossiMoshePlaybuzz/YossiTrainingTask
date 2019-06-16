@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import static com.codeborne.selenide.Selenide.$;
 
-@Listeners(MyListener.class)
+
 public class API_Results extends BaseTest {
     private String PearlJam = "pearl jam";
     private List<String> urls = new ArrayList<String>();
@@ -23,44 +23,50 @@ public class API_Results extends BaseTest {
 
     @Test(priority = -1,groups =  {Groups.SMOKE,Groups.ALL})
     public void beforeTests_getResults(){
-        MainPage PlaybuzzMainPage = new MainPage(driver);
-        ResultsPage PlaybuzzResultsPage = new ResultsPage(driver);
-        ResultSection PlaybuzzResultSection = new ResultSection(driver);
+        MainPage GoogleMainPage = new MainPage(driver);
+        ResultsPage GoogleResultsPage = new ResultsPage(driver);
+        ResultSection GoogleResultSection = new ResultSection(driver);
         driver.get(url);
-        PlaybuzzMainPage.searchValue(PearlJam);
+        GoogleMainPage.searchValue(PearlJam);
 
         for(int i=0; i<numOfUrls; i++){
-            WebElement result = PlaybuzzResultsPage.getResultByIndex(i);
-            String url = $(result).find(PlaybuzzResultSection.LINKED_URL).getText();
+            WebElement result = GoogleResultsPage.getResultByIndex(i);
+            String url = $(result).find(GoogleResultSection.LINKED_URL).getText();
             urls.add(url);
         }
     }
 
-    @Test(groups =  {Groups.SMOKE,Groups.ALL},dependsOnMethods = "beforeTests_getResults")
+    @Test(groups =  {Groups.SMOKE,Groups.ALL}, dependsOnMethods = "beforeTests_getResults")
     public void Test05_firstResultsContainsPearlJam() {
-        Assert.assertTrue(isPearlJamExistInPage(urls.get(0)));
+        String responseAsString = getUrlAsString(urls.get(0));
+        Assert.assertTrue(isPearlJamExistInPage(responseAsString));
     }
 
-    @Test(groups =  {Groups.SMOKE,Groups.ALL},dependsOnMethods = "beforeTests_getResults")
+    @Test(groups =  {Groups.SMOKE,Groups.ALL}, dependsOnMethods = "beforeTests_getResults")
     public void Test06_secondResultsContainsPearlJam() {
-        Assert.assertTrue(isPearlJamExistInPage(urls.get(2)));
+        String responseAsString = getUrlAsString(urls.get(2));
+        Assert.assertTrue(isPearlJamExistInPage(responseAsString));
     }
 
-    @Test(groups =  {Groups.SMOKE,Groups.ALL},dependsOnMethods = "beforeTests_getResults")
+    @Test(groups =  {Groups.SMOKE,Groups.ALL}, dependsOnMethods = "beforeTests_getResults")
     public void test07_thirdResultsContainsPearlJam() {
-        Assert.assertTrue(isPearlJamExistInPage(urls.get(3)));
+        String responseAsString = getUrlAsString(urls.get(4));
+        Assert.assertTrue(isPearlJamExistInPage(responseAsString));
     }
 
     //---------------------------------------
 
-    public boolean isPearlJamExistInPage(String url) {
-        Response response = getPage(url);
-        Assert.assertEquals(response.getStatusCode(),200);
-        String responseAsString = response.asString();
+    public boolean isPearlJamExistInPage(String responseAsString) {
         return responseAsString.toLowerCase().contains(PearlJam);
     }
 
+    public String getUrlAsString(String url){
+        return getPage(url).asString();
+    }
+
     public Response getPage(String url){
-        return RestAssured.get(url);
+        Response response = RestAssured.get(url);
+        response.then().statusCode(200);
+        return response;
     }
 }
