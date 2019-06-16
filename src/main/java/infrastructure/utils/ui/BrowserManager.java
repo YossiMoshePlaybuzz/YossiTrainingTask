@@ -61,17 +61,15 @@ public class BrowserManager {
     }
 
     public void waitForUrlToAppear(String url,WebDriver driver) {
-        with()
-                .alias("URL was not become = " + url)
-                .pollInSameThread()
-                .await()
-                .atMost(timeout, TimeUnit.SECONDS).until(() -> isUrlAppear(url,driver));
+        with().alias("URL was not become = " + url)
+                 .pollInSameThread()
+                 .await()
+                 .atMost(timeout, TimeUnit.SECONDS).until(() -> isUrlAppear(url,driver));
     }
 
     public boolean isUrlAppear(String url, WebDriver driver){
         String currentUrl = driver.getCurrentUrl();
         return currentUrl.contains(url);
     }
-
 
 }

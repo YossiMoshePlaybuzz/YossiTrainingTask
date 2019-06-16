@@ -2,7 +2,6 @@ package infrastructure.utils.ui;
 
 import org.openqa.selenium.WebDriver;
 
-
 public class WebDriverFactory extends BrowserManager {
     public WebDriver CreateInstance(String browserType) {
         switch(browserType.toLowerCase())

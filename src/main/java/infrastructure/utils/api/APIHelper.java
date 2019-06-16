@@ -6,14 +6,12 @@ import com.jayway.restassured.specification.RequestSpecification;
 
 public class APIHelper {
 
-
     public RequestSpecification ra() {
         return RestAssured.given();
     }
 
     public Response getUrl(String url) {
-        return ra()
-                .get(url);
+        return ra().get(url);
     }
 
     public Response getPage(String url){
@@ -27,7 +25,6 @@ public class APIHelper {
     }
 
     public int getMaxId(String url){
-        Response response = getUrl(url);
-        return response.path("data.id.max()");
+        return getUrl(url).path("data.id.max()");
     }
 }

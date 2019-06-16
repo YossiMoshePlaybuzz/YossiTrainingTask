@@ -1,7 +1,6 @@
 package infrastructure.pageObjects_Playbuzz;
 
 import infrastructure.pageObjects_Playbuzz.resultSection.ResultSection;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,7 +12,6 @@ import static infrastructure.pageObjects_Playbuzz.resultSection.ResultSection.LI
 
 public class ResultsPage
 {
-    private static By RESULTS = By.name("rc");
 	ResultSection GoogleResultSection;
 
 	@FindBy(className = "rc")
