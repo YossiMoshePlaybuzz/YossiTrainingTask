@@ -30,8 +30,7 @@ public class API_Results extends BaseTest {
         GoogleMainPage.searchValue(PearlJam);
 
         for(int i=0; i<numOfUrls; i++){
-            WebElement result = GoogleResultsPage.getResultByIndex(i);
-            String url = $(result).find(GoogleResultSection.LINKED_URL).getText();
+            String url = GoogleResultsPage.getUrlByResultIndex(i);
             urls.add(url);
         }
     }
