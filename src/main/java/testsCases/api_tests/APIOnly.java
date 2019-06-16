@@ -1,20 +1,19 @@
 package testsCases.api_tests;
 
-import com.jayway.restassured.RestAssured;
 import infrastructure.utils.Groups;
-import infrastructure.utils.MyListener;
-import org.testng.annotations.Listeners;
+import infrastructure.utils.api.APIHelper;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import static org.hamcrest.core.IsEqual.equalTo;
 
 
 public class APIOnly {
 
+    APIHelper api = new APIHelper();
+    String url = "https://reqres.in/api/users?page=2";
+
     @Test (groups = {Groups.SMOKE,Groups.ALL})
     public void Test04_highestId() {
-        RestAssured.
-                get("https://reqres.in/api/users?page=2")
-                .then()
-                .body("data.id.max()", equalTo(6));
+        int maxId = api.getMaxId(url);
+        Assert.assertEquals(maxId,6);
     }
 }

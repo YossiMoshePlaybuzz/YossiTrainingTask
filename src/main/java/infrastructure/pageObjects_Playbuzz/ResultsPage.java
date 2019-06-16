@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
+import static infrastructure.pageObjects_Playbuzz.resultSection.ResultSection.LINKED_URL;
 
 public class ResultsPage
 {
@@ -28,7 +29,7 @@ public class ResultsPage
 	}
 
 	public String getUrlByResultIndex(int index){
-		return $(getResultByIndex(index)).find(GoogleResultSection.LINKED_URL).getText();
+		return $(getResultByIndex(index)).find(LINKED_URL).getText();
 	}
 
 	public List<WebElement> getResults(){
