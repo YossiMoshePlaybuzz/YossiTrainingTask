@@ -2,10 +2,7 @@ package infrastructure.utils.api;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
-import com.jayway.restassured.response.ValidatableResponse;
 import com.jayway.restassured.specification.RequestSpecification;
-
-import static org.hamcrest.core.IsEqual.equalTo;
 
 public class APIHelper {
 

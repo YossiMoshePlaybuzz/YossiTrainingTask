@@ -17,7 +17,7 @@ public class LoadTests extends BaseTest {
     @Test(groups =  {Groups.REGRESSION,Groups.ALL})
     public void Test01_LoadTimeGoogleSite() {
         LocalDateTime startTime = getNowTime();
-        driver.get(url);
+        driver.get(url);  // driver has timout for load page
         LocalDateTime endTime = getNowTime();
         long actualLoadTimeInMili = difBetweenTimesInMili(startTime,endTime);
         assertTrue(actualLoadTimeInMili <= expectedLoadDurationInMili);

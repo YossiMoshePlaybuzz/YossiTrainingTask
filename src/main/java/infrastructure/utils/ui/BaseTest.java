@@ -16,38 +16,52 @@ public class BaseTest extends BrowserManager {
     private  static ExtentReports extent;
     private String reportFilePath = "C:/Automation/Reports/";
     private String reportFileName = "TestExecution";
-    private static String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
+    private static String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss")
+                                            .format(Calendar.getInstance().getTime());
 
-    public void startDockerCompose() throws IOException, InterruptedException {
-        String command = "powershell.exe  docker-compose up";
-        runProcess(command);
-    }
-
-    public void stopDockerCompose() throws IOException, InterruptedException {
-        String command = "powershell.exe  docker-compose down";
-        runProcess(command);
-    }
 
     public void runProcess(String command) throws IOException, InterruptedException {
         Process powerShellProcess = Runtime.getRuntime().exec(command);
         powerShellProcess.waitFor(30, TimeUnit.SECONDS);
     }
 
+    public void startDockerCompose()  {
+        String command = "powershell.exe  docker-compose up";
+        try {
+            runProcess(command);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void stopDockerCompose(){
+        String command = "powershell.exe  docker-compose down";
+        try {
+            runProcess(command);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     @BeforeSuite(alwaysRun = true)
-    public void doBeforeSuite() throws IOException, InterruptedException {
+    public void doBeforeSuite()  {
         startDockerCompose();
         InstanceReport();
     }
 
     @AfterSuite(alwaysRun = true)
-    public void doAfterSuite() throws IOException, InterruptedException {
+    public void doAfterSuite()  {
         stopDockerCompose();
         finalizeExtentReport();
     }
 
     @BeforeMethod(alwaysRun = true)
     @Parameters ({ "browserType" })
-    public void DoBeforeMethod(@Optional("chrome") String browserType, Method method) throws IOException {
+    public void DoBeforeMethod(@Optional("chrome") String browserType, Method method) {
         driver = getBrowser(browserType);
         setBrowserSettings(driver);
         InitReportTest(method.getName().split("_")[0], method.getName().split("_")[1]);

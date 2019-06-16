@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class APIOnly {
+public class API_HighestID {
 
     APIHelper api = new APIHelper();
     String url = "https://reqres.in/api/users?page=2";

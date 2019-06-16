@@ -1,10 +1,8 @@
 package infrastructure.utils.ui;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -15,13 +13,12 @@ public class BrowserManager {
     protected String url = System.getProperty("url");
     private static int timeout = 30;
 
-    public WebDriver getBrowser(String browserType) throws IOException {
+    public WebDriver getBrowser(String browserType) {
         WebDriverFactory factory = new WebDriverFactory();
         return factory.CreateInstance(browserType);
     }
 
-    public WebDriver initRemoteChromeDriver() throws MalformedURLException {
-        //System.setProperty("webdriver.chrome.driver", "C:/AutomationTraining/src/main/java/drivers/chromedriver.exe");
+    public WebDriver initRemoteChromeDriver() {
         DesiredCapabilities cap = setChromeCapabilities();
         driver = new RemoteWebDriver(setHubUrl(),cap);
         return driver;
@@ -34,17 +31,18 @@ public class BrowserManager {
         return cap;
     }
 
-    public URL setHubUrl() throws MalformedURLException {
-        return new URL("http://localhost:4444/wd/hub");
-    }
-    public WebDriver initIEDriver() {
-        System.setProperty("webdriver.ie.driver", "C:/AutomationTraining/src/main/java/drivers/IEDriverServer.exe");
-        driver = new InternetExplorerDriver();
-        return driver;
+    public URL setHubUrl() {
+        URL hubUrl = null;
+        try {
+            hubUrl = new URL("http://localhost:4444/wd/hub");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return hubUrl;
     }
 
-    public WebDriver initRemoteFFDriver() throws IOException {
-        System.setProperty("webdriver.gecko.driver", "C:/AutomationTraining/src/main/java/drivers/geckodriver.exe");
+
+    public WebDriver initRemoteFFDriver() {
         DesiredCapabilities cap = setFFCapabilities();
         driver = new RemoteWebDriver(setHubUrl(),cap);
         return driver;

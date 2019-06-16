@@ -7,8 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import java.util.List;
-
 import static com.codeborne.selenide.Selenide.$;
+import static infrastructure.pageObjects_Playbuzz.resultSection.ResultSection.DESCRIPTION;
 import static infrastructure.pageObjects_Playbuzz.resultSection.ResultSection.LINKED_URL;
 
 public class ResultsPage
@@ -32,7 +32,15 @@ public class ResultsPage
 		return $(getResultByIndex(index)).find(LINKED_URL).getText();
 	}
 
-	public List<WebElement> getResults(){
-		return results;
+	public void clickOnUrlByResultIndex(int index){
+		$(getResultByIndex(index)).find(LINKED_URL).click();
+	}
+
+	public String getDescriptionByResultIndex(int index){
+		return $(getResultByIndex(index)).find(DESCRIPTION).getText();
+	}
+
+	public int getResultsSize(){
+		return results.size();
 	}
 }

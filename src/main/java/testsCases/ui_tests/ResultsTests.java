@@ -1,19 +1,11 @@
 package testsCases.ui_tests;
 
-
 import infrastructure.pageObjects_Playbuzz.MainPage;
 import infrastructure.pageObjects_Playbuzz.ResultsPage;
-import infrastructure.pageObjects_Playbuzz.resultSection.ResultSection;
-import infrastructure.utils.MyListener;
 import infrastructure.utils.ui.BaseTest;
 import infrastructure.utils.Groups;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import static com.codeborne.selenide.Selenide.$;
-import static org.testng.Assert.assertTrue;
-
 
 
 public class ResultsTests extends BaseTest {
@@ -24,16 +16,13 @@ public class ResultsTests extends BaseTest {
     public void Test03_allResultsContainsPearlJam() {
         MainPage PlaybuzzMainPage = new MainPage(driver);
         ResultsPage PlaybuzzResultsPage = new ResultsPage(driver);
-        ResultSection PlaybuzzResultSection = new ResultSection(driver);
         driver.get(url);
         PlaybuzzMainPage.searchValue(PearlJam);
-        for(WebElement element : PlaybuzzResultsPage.getResults()) {
-            String description = $(element).find(PlaybuzzResultSection.DESCRIPTION).getText();
+
+        for (int i=0; i < PlaybuzzResultsPage.getResultsSize(); i++){
+            String description = PlaybuzzResultsPage.getDescriptionByResultIndex(i);
             Assert.assertTrue(description.toLowerCase().contains(PearlJam));
         }
     }
-
-
-
 
 }

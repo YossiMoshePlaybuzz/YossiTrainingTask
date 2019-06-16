@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
-
 import static com.codeborne.selenide.Selenide.$;
 import static org.testng.Assert.fail;
 
@@ -15,7 +14,6 @@ public class MainPage extends LoadableComponent <MainPage>
 {
 	WebDriver driver = null;
 	public static By SEARCH_BAR = By.name("q");
-	public static By GOOGLE_SEARCH = By.name("btnK");
 
 	@FindBy(name = "q")
 	public WebElement searchBar;
