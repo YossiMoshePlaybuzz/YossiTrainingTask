@@ -16,19 +16,20 @@ public class BaseTest extends BrowserManager {
     private  static ExtentReports extent;
     private String reportFilePath = "C:/Automation/Reports/";
     private String reportFileName = "TestExecution";
+    private static int timeout = 25;
     private static String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss")
                                             .format(Calendar.getInstance().getTime());
 
 
-    public void runProcess(String command) throws IOException, InterruptedException {
+    public void runProcess(String command,int timeout) throws IOException, InterruptedException {
         Process powerShellProcess = Runtime.getRuntime().exec(command);
-        powerShellProcess.waitFor(30, TimeUnit.SECONDS);
+        powerShellProcess.waitFor(timeout, TimeUnit.SECONDS);
     }
 
     public void startDockerCompose()  {
         String command = "powershell.exe  docker-compose up";
         try {
-            runProcess(command);
+            runProcess(command,timeout);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -39,7 +40,7 @@ public class BaseTest extends BrowserManager {
     public void stopDockerCompose(){
         String command = "powershell.exe  docker-compose down";
         try {
-            runProcess(command);
+            runProcess(command,5);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

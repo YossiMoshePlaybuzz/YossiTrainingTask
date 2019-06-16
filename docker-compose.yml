@@ -1,35 +1,25 @@
-version: '2'
+seleniumhub:
+  image: selenium/hub
+  ports:
+    - 4444:4444
 
-services:
+chromenode1:
+  image: selenium/node-chrome-debug
+  ports:
+    - 4578
+  links:
+    -  seleniumhub:hub
 
-    seleniumhub:
-      image: selenium/hub
-      ports:
-         - 4446:4444
-         
-    chromenode1:
-      image: selenium/node-chrome-debug
-      depends_on:
-        - seleniumhub
-      ports:
-        - 4578
-      links:
-       -  seleniumhub:hub
+chromenode2:
+  image: selenium/node-chrome-debug
+  ports:
+    - 4579
+  links:
+    - seleniumhub:hub
 
-    chromenode2:
-      image: selenium/node-chrome-debug
-      depends_on:
-        - seleniumhub
-      ports:
-        - 4579
-      links:
-        - seleniumhub:hub
-    
-    firefoxnode:
-      image: selenium/node-firefox-debug
-      depends_on:
-        - seleniumhub
-      ports:
-        - 4577
-      links:
-      -  seleniumhub:hub
+firefoxnode:
+  image: selenium/node-firefox-debug
+  ports:
+    - 4577
+  links:
+    -  seleniumhub:hub

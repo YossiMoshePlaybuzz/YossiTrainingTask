@@ -1,9 +1,7 @@
 package testsCases.ui_tests;
 
-import infrastructure.utils.MyListener;
 import infrastructure.utils.ui.BaseTest;
 import infrastructure.utils.Groups;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -12,7 +10,7 @@ import static org.testng.Assert.assertTrue;
 
 public class LoadTests extends BaseTest {
 
-    private long expectedLoadDurationInMili = 2000;
+    private long expectedLoadDurationInMili = 5000;
 
     @Test(groups =  {Groups.REGRESSION,Groups.ALL})
     public void Test01_LoadTimeGoogleSite() {
