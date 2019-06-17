@@ -12,7 +12,7 @@ import static org.testng.Assert.fail;
 
 public class GoogleSearchPage extends LoadableComponent <GoogleSearchPage>
 {
-	WebDriver driver = null;
+	private WebDriver driver = null;
 	public static By SEARCH_BAR = By.name("q");
 
 	@FindBy(name = "q")
