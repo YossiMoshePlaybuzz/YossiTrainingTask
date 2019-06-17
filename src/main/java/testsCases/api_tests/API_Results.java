@@ -1,7 +1,7 @@
 package testsCases.api_tests;
 
 import infrastructure.pageObjects_Playbuzz.GoogleSearchPage;
-import infrastructure.pageObjects_Playbuzz.ResultsPage;
+import infrastructure.pageObjects_Playbuzz.resultSection.ResultSection;
 import infrastructure.utils.Groups;
 import infrastructure.utils.api.APIHelper;
 import infrastructure.utils.ui.BaseTest;
@@ -38,10 +38,10 @@ public class API_Results extends BaseTest {
 
     public String getUrlByResultIndex(int index){
         GoogleSearchPage GoogleMainPage = new GoogleSearchPage(driver);
-        ResultsPage GoogleResultsPage = new ResultsPage(driver);
         driver.get(url);
         GoogleMainPage.searchValue(PearlJam);
-        return GoogleResultsPage.getUrlByResultIndex(index);
+        ResultSection result = new ResultSection(index,driver);
+        return result.getUrl();
     }
 
     public boolean isPearlJamExistInPage(String responseAsString) {

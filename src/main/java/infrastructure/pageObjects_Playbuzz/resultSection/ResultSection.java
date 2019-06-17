@@ -1,11 +1,12 @@
 package infrastructure.pageObjects_Playbuzz.resultSection;
 
-import com.codeborne.selenide.Condition;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
-import static com.codeborne.selenide.Selenide.$;
 
 
 public class ResultSection {
@@ -33,9 +34,9 @@ public class ResultSection {
         sectionElement = getSectionByIndex(indexLocation);
     }
 
-
     public List<WebElement> getAllSections() {
-        $(SECTION_LOCATOR).waitUntil(Condition.appears,10);
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(SECTION_LOCATOR,1));
         return driver.findElements(SECTION_LOCATOR);
     }
 
@@ -44,24 +45,20 @@ public class ResultSection {
     }
 
     public String getUrl(){
-        return $(sectionElement).find(LINKED_URL).getText();
+        return sectionElement.findElement(LINKED_URL).getText();
     }
 
     public void clickOnUrl(){
-        $(sectionElement).find(LINKED_URL).click();
+        sectionElement.findElement(LINKED_URL).click();
     }
 
     public String getDescription(){
-        return $(sectionElement).find(DESCRIPTION).getText();
+        return sectionElement.findElement(DESCRIPTION).getText();
     }
 
     public int getResultsSize(){
         return getAllSections().size();
     }
-
-
-
-
 
 
 }
