@@ -1,6 +1,6 @@
 package testsCases.ui_tests;
 
-import infrastructure.pageObjects_Playbuzz.MainPage;
+import infrastructure.pageObjects_Playbuzz.GoogleSearchPage;
 import infrastructure.pageObjects_Playbuzz.ResultsPage;
 import infrastructure.utils.ui.BaseTest;
 import infrastructure.utils.Groups;
@@ -12,7 +12,7 @@ public class TitleTests extends BaseTest {
 
     @Test(groups =  {Groups.REGRESSION,Groups.ALL})
     public void Test02_titleNotEmpty() {
-        MainPage googleMainPage = new MainPage(driver);
+        GoogleSearchPage googleMainPage = new GoogleSearchPage(driver);
         ResultsPage googleResultsPage = new ResultsPage(driver);
         driver.get(url);
         googleMainPage.searchValue(PearlJam);

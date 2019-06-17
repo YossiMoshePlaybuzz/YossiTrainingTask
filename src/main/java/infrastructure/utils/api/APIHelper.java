@@ -20,7 +20,7 @@ public class APIHelper {
         return response;
     }
 
-    public String getUrlAsString(String url){
+    public String getResponseAsString(String url){
         return getPage(url).asString();
     }
 

@@ -1,6 +1,6 @@
 package testsCases.ui_tests;
 
-import infrastructure.pageObjects_Playbuzz.MainPage;
+import infrastructure.pageObjects_Playbuzz.GoogleSearchPage;
 import infrastructure.pageObjects_Playbuzz.ResultsPage;
 import infrastructure.utils.ui.BaseTest;
 import infrastructure.utils.Groups;
@@ -14,7 +14,7 @@ public class ResultsTests extends BaseTest {
 
     @Test(groups =  {Groups.REGRESSION,Groups.ALL})
     public void Test03_allResultsContainsPearlJam() {
-        MainPage PlaybuzzMainPage = new MainPage(driver);
+        GoogleSearchPage PlaybuzzMainPage = new GoogleSearchPage(driver);
         ResultsPage PlaybuzzResultsPage = new ResultsPage(driver);
         driver.get(url);
         PlaybuzzMainPage.searchValue(PearlJam);

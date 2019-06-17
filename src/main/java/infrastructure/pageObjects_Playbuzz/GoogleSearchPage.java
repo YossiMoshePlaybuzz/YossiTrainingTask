@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 import static com.codeborne.selenide.Selenide.$;
 import static org.testng.Assert.fail;
 
-public class MainPage extends LoadableComponent <MainPage>
+public class GoogleSearchPage extends LoadableComponent <GoogleSearchPage>
 {
 	WebDriver driver = null;
 	public static By SEARCH_BAR = By.name("q");
@@ -21,7 +21,7 @@ public class MainPage extends LoadableComponent <MainPage>
 	@FindBy(name = "btnK")
 	public WebElement googleSearch;
 
-	public MainPage(WebDriver driver) {
+	public GoogleSearchPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
 	}

@@ -9,6 +9,6 @@ import org.testng.annotations.Test;
 public class BuildTests {
     @Test
     public void Test07_Build() {
-        Assert.assertTrue(true);
+        Assert.assertTrue(false);
     }
 }
