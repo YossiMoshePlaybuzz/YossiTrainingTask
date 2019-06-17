@@ -12,14 +12,14 @@ import static infrastructure.pageObjects_Playbuzz.resultSection.ResultSection.LI
 
 public class ResultsPage
 {
-	ResultSection GoogleResultSection;
+	//ResultSection GoogleResultSection;
 
 	@FindBy(className = "rc")
 	private List<WebElement> results;
 
 	public ResultsPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
-		GoogleResultSection = new ResultSection(driver);
+		//GoogleResultSection = new ResultSection(driver);
 	}
 
 	public WebElement getResultByIndex(int index){
