@@ -83,16 +83,19 @@ public class BaseTest extends BrowserManager {
 
     public  void InitReportTest(String testName, String testDescription) {
         ExtentTest test = extent.startTest(testName, testDescription);
-        test.log(LogStatus.PASS, "Test " + testDescription + " is running");
+        test.log(LogStatus.PASS, "Test " + testDescription + " started");
         ExtentTestsList.add(test);
-
     }
 
     public  void finalizeExtentReport() {
+        addTestsToReport();
+        extent.flush();
+        extent.close();
+    }
+
+    private void addTestsToReport(){
         for (ExtentTest test : ExtentTestsList){
             extent.endTest(test);
         }
-        extent.flush();
-        extent.close();
     }
 }
