@@ -2,6 +2,7 @@ package testsCases.ui_tests;
 
 import infrastructure.utils.ui.BaseTest;
 import infrastructure.utils.Groups;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.time.Duration;
 import java.time.LocalDateTime;

@@ -29,7 +29,7 @@ public class API_Results extends BaseTest {
 
     @Test(groups =  {Groups.SMOKE,Groups.ALL})
     public void test07_thirdResultsContainsPearlJam() {
-        String url = getUrlByResultIndex(4);
+        String url = getUrlByResultIndex(3);
         String responseAsString = api.getResponseAsString(url);
         Assert.assertTrue(isPearlJamExistInPage(responseAsString));
     }

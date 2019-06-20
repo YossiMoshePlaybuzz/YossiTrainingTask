@@ -8,12 +8,15 @@ import org.testng.annotations.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Listeners(MyListener.class)
 public class BaseTest extends BrowserManager {
     private  static ExtentReports extent;
+    public static List<ExtentTest> ExtentTestsList = new ArrayList<>();
     private String reportFilePath = "C:/Automation/Reports/";
     private String reportFileName = "TestExecution";
     private static int timeout = 25;
@@ -81,10 +84,14 @@ public class BaseTest extends BrowserManager {
     public  void InitReportTest(String testName, String testDescription) {
         ExtentTest test = extent.startTest(testName, testDescription);
         test.log(LogStatus.PASS, "Test " + testDescription + " is running");
-        extent.endTest(test);
+        ExtentTestsList.add(test);
+
     }
 
     public  void finalizeExtentReport() {
+        for (ExtentTest test : ExtentTestsList){
+            extent.endTest(test);
+        }
         extent.flush();
         extent.close();
     }

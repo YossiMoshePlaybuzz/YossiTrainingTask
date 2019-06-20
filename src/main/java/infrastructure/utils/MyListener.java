@@ -1,5 +1,8 @@
 package infrastructure.utils;
 
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import infrastructure.utils.ui.BaseTest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.ITestListener;
@@ -18,12 +21,21 @@ public class MyListener implements ITestListener
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        logger.info("Test passed");
+        logger.info( " Test passed");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         logger.error("Test " + result.getThrowable()+ " Failed");
+        String testName = result.getName();
+        failExtentTest(testName);
+    }
+
+    private void failExtentTest(String testName){
+        for(ExtentTest test : BaseTest.ExtentTestsList){
+            if(testName.contains(test.getDescription()))
+                test.log(LogStatus.FAIL, "Test " + testName + " failed");
+        }
     }
 
     @Override

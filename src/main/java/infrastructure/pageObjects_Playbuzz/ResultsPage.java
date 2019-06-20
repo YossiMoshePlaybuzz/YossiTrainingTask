@@ -1,6 +1,7 @@
 package infrastructure.pageObjects_Playbuzz;
 
 
+import infrastructure.pageObjects_Playbuzz.resultSection.ResultSection;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,10 +17,21 @@ public class ResultsPage
 	public static By DESCRIPTION = By.className("st");
 	@FindBy(className = "rc")
 	private List<WebElement> results;
+	private WebDriver driver = null;
+	ResultSection[] resultSections = new ResultSection[9];
+
 
 	public ResultsPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
+		this.driver = driver;
+	}
 
+	public ResultSection getResult(int index){
+		if(resultSections[index] != null){
+			ResultSection result = new ResultSection(index,driver);
+			resultSections[index] = result;
+		}
+		return resultSections[index];
 	}
 
 	public WebElement getResultByIndex(int index){
